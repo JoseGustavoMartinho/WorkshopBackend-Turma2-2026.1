@@ -7,13 +7,21 @@
 </head>
 <body>
     <h1>Pessoas cadastradas</h1>
-    <p>Boa Tarde<p>
-    <ul>
-        {% for pessoa in Pessoas %}
-        <li>{{ pessoa.nome }}</li>
-        <li>{{ pessoa.email }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'criar_pessoas' %}">>Cadastrar Nova Pessoa</a>
+    <table border="1">
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th colspan="2">Opções</th>
+        </tr>
+    {% for pessoa in pessoas %} 
+    <tr>
+        <td>{{ pessoa.nome }}</td>
+        <td>{{ pessoa.email }}</td>
+        <td><a href="{% url 'atualizar_pessoa' pessoa.id %}"><button>Editar</button></a></td>
+        <td><a href="{% url 'deletar_pessoa' pessoa.id %}"><button>Apagar</button></a></td>
+    </tr>
+    {% endfor %}
+    </table>
+    <a href="{% url 'criar_pessoas' %}"><button>Criar</button></a>
 </body>
 </html>

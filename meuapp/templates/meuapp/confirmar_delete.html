@@ -6,12 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Cadastrar de Pessoas</h1>
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit"> salvar</button>
+    {% csrf_token %}
+    <p>Tem certeza que deseja deletar {{ pessoa.nome }}?</p>
+    <button type="submit">SIM</button>
+    <a href="{% url 'listar_pessoas' %}"><button type="button">Nao</button></a>
+
+
     </form>
-    
 </body>
 </html>
